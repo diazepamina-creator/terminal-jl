@@ -5,9 +5,19 @@
 <meta charset="UTF-8">
 <!--
   TERMINAL DE DESPACHO J&L
-  Práctica interactiva de álgebra para 2.º de ESO · versión 5.5
+  Práctica interactiva de álgebra para 2.º de ESO · versión 5.5.1
   Material complementario del Dossier del Transportista.
   Surgido del proyecto de innovación educativa MAT180 (GVA).
+
+  NOVEDADES DE LA 5.5.1 · LOS PANELES PLEGADOS, DORMIDOS
+  · Un panel plegado (camión, báscula, bodega) solo estaba aplastado a
+    altura cero: sus botones seguían recibiendo el tabulador y los clics.
+    Con la báscula de un ejercicio que no la usa, «Repartir» llegaba a
+    ejecutarse sin ecuación montada y la app daba un error. Ahora el panel
+    plegado es inerte (atributo inert) y las acciones de la báscula
+    comprueban que hay una báscula montada antes de tocar nada.
+  · Fuera los enlaces al manifiesto y a los iconos: esos archivos no han
+    existido nunca en el repositorio y el navegador pedía tres que daban 404.
 
   NOVEDADES DE LA 5.5 · REPASO VISUAL
   · TEMA CLARO ARREGLADO EN LAS MÁQUINAS. El panel del camión y el de la
@@ -223,9 +233,6 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="Terminal J&L">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="icon-180.png">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
 <meta name="author" content="Andrés Asensio">
 <meta name="copyright" content="© 2026 Andrés Asensio · CC BY-NC-ND 4.0">
@@ -1256,7 +1263,7 @@
     <div class="logo">
       <span class="jl">J&L</span>
       <span>LOGÍSTICA J&amp;L
-        <small><span data-i18n="ui.subtitle">TERMINAL DE DESPACHO · v5.5</span>
+        <small><span data-i18n="ui.subtitle">TERMINAL DE DESPACHO · v5.5.1</span>
           <span class="clock" id="clock" aria-hidden="true">--:--:--</span></small>
       </span>
     </div>
@@ -1303,7 +1310,7 @@
       <div class="cam-toggle">
         <button id="camToggle" aria-expanded="false" aria-controls="camPanel"><svg class="ico" viewBox="0 0 18 14" aria-hidden="true"><path d="M1 2.5A1.5 1.5 0 0 1 2.5 1H10v8H1z" fill="currentColor" opacity=".85"/><path d="M10 4h3.6l2.6 2.8V9H10z" fill="currentColor"/><circle cx="4.5" cy="11" r="1.9" fill="currentColor"/><circle cx="13" cy="11" r="1.9" fill="currentColor"/><circle cx="4.5" cy="11" r=".7" fill="#0b1220"/><circle cx="13" cy="11" r=".7" fill="#0b1220"/></svg> <span id="camToggleTxt" data-i18n="cam.toggle">Abrir la vista del camión</span></button>
       </div>
-      <div class="cam-panel" id="camPanel">
+      <div class="cam-panel" id="camPanel" inert>
         <div class="cam-head">
           <span><svg class="ico" viewBox="0 0 18 14" aria-hidden="true"><path d="M1 2.5A1.5 1.5 0 0 1 2.5 1H10v8H1z" fill="currentColor" opacity=".85"/><path d="M10 4h3.6l2.6 2.8V9H10z" fill="currentColor"/><circle cx="4.5" cy="11" r="1.9" fill="currentColor"/><circle cx="13" cy="11" r="1.9" fill="currentColor"/><circle cx="4.5" cy="11" r=".7" fill="#0b1220"/><circle cx="13" cy="11" r=".7" fill="#0b1220"/></svg> <b data-i18n="cam.title">CAMIÓN</b> · <span id="camMatricula">JL-100</span></span>
           <span id="camAyuda" data-i18n="cam.ayuda">Pulsa los términos para cargarlos</span>
@@ -1322,7 +1329,7 @@
       <div class="cam-toggle" id="basWrap">
         <button id="basToggle" aria-expanded="false" aria-controls="basPanel"><svg class="ico" viewBox="0 0 18 14" aria-hidden="true"><path d="M9 1v10M3 4h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M1 8l2-4 2 4zM13 8l2-4 2 4z" fill="currentColor"/><path d="M1 8a2 1.3 0 0 0 4 0M13 8a2 1.3 0 0 0 4 0" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M6 12h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> <span id="basToggleTxt" data-i18n="bas.toggle">Abrir la báscula</span></button>
       </div>
-      <div class="cam-panel" id="basPanel">
+      <div class="cam-panel" id="basPanel" inert>
         <div class="cam-head">
           <span><svg class="ico" viewBox="0 0 18 14" aria-hidden="true"><path d="M9 1v10M3 4h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M1 8l2-4 2 4zM13 8l2-4 2 4z" fill="currentColor"/><path d="M1 8a2 1.3 0 0 0 4 0M13 8a2 1.3 0 0 0 4 0" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M6 12h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> <b data-i18n="bas.title">BÁSCULA</b> · <span id="basCodigo">JL-100</span></span>
           <span id="basAyuda" data-i18n="bas.ayuda">Pulsa una caja para bajarla de ese camión</span>
@@ -1390,7 +1397,7 @@
       <div class="cam-toggle" id="bodWrap">
         <button id="bodToggle" aria-expanded="false" aria-controls="bodPanel"><svg class="ico" viewBox="0 0 18 14" aria-hidden="true"><path d="M1.5 13V6L9 1.5 16.5 6v7z" fill="currentColor" opacity=".85"/><path d="M5 13V8h8v5" fill="#0b1220" opacity=".55"/><path d="M9 8v5" stroke="#0b1220" stroke-width="1.2"/></svg> <span id="bodToggleTxt" data-i18n="bod.toggle">Abrir la bodega</span></button>
       </div>
-      <div class="cam-panel" id="bodPanel">
+      <div class="cam-panel" id="bodPanel" inert>
         <div class="cam-head">
           <span><svg class="ico" viewBox="0 0 18 14" aria-hidden="true"><path d="M1.5 13V6L9 1.5 16.5 6v7z" fill="currentColor" opacity=".85"/><path d="M5 13V8h8v5" fill="#0b1220" opacity=".55"/><path d="M9 8v5" stroke="#0b1220" stroke-width="1.2"/></svg> <b data-i18n="bod.title">BODEGA</b> · <span id="bodCodigo">JL-100</span></span>
           <span id="bodAyuda" data-i18n="bod.ayuda">Prueba lados hasta que no sobre ninguna</span>
@@ -1705,7 +1712,7 @@
 <script>
 const I18N = {
   es: {
-    'ui.subtitle'        : 'TERMINAL DE DESPACHO · v5.5',
+    'ui.subtitle'        : 'TERMINAL DE DESPACHO · v5.5.1',
     'boot.title'         : 'LOGÍSTICA J&L · SISTEMA DE DESPACHO',
     'boot.skip'          : 'toca para saltar',
     'boot.ok'            : 'OK',
@@ -2188,7 +2195,7 @@ function applyI18n(){
 }
 
 I18N.va = {
-  'ui.subtitle'        : 'TERMINAL DE DESPATX · v5.5',
+  'ui.subtitle'        : 'TERMINAL DE DESPATX · v5.5.1',
   'boot.title'         : 'LOGÍSTICA J&L · SISTEMA DE DESPATX',
   'boot.skip'          : 'toca per a saltar',
   'boot.ok'            : 'OK',
@@ -5775,6 +5782,7 @@ function avisaMaquina(id){
 function setCamion(abierto){
   camAbierto = !!abierto;
   $('camPanel').classList.toggle('open', camAbierto);
+  $('camPanel').inert = !camAbierto;   // cerrado no es invisible: max-height 0, pero sus botones seguían vivos
   $('camToggle').setAttribute('aria-expanded', String(camAbierto));
   $('camToggleTxt').textContent = T(camAbierto ? 'cam.toggleOff' : 'cam.toggle');
 }
@@ -6189,6 +6197,7 @@ function actualizarBascula(){
 function setBascula(abierta){
   basAbierta = !!abierta;
   $('basPanel').classList.toggle('open', basAbierta);
+  $('basPanel').inert = !basAbierta;   // ídem: sin esto, el tabulador llegaba a «Repartir» con la báscula plegada
   $('basToggle').setAttribute('aria-expanded', String(basAbierta));
   $('basToggleTxt').textContent = T(basAbierta ? 'bas.toggleOff' : 'bas.toggle');
 }
@@ -6251,6 +6260,7 @@ function basQuizaReescribe(){
 }
 function basReescribe(){
   const q = basPend;
+  if(!q) return;                 // sin báscula montada no hay nada que reescribir
   if(!(q.izq.x || q.izq.c || q.der.x || q.der.c)) return;
   basLineas.push({izq:basLadoTexto(basBase.izq), der:basLadoTexto(basBase.der)});
   basReciente = true;
@@ -6531,7 +6541,7 @@ function basGuarda(){
 }
 
 function basManiobra(sitio, etq, delta){
-  if(basRepartiendo || basInvirtiendo) return;
+  if(!basEcu || basRepartiendo || basInvirtiendo) return;
   const otro = sitio === 'izq' ? 'der' : 'izq';
   basGolpes.push(Date.now());
   basGuarda();
@@ -6548,7 +6558,7 @@ function basManiobra(sitio, etq, delta){
 }
 
 function basRepartirCarga(){
-  if(basRepartiendo) return;
+  if(!basEcu || basRepartiendo) return;
   basGuarda();
   clearTimeout(basReloj);
   basReescribe();
@@ -6586,7 +6596,7 @@ function basRepartirCarga(){
 }
 
 function basInvertir(){
-  if(basRepartiendo || basInvirtiendo) return;
+  if(!basEcu || basRepartiendo || basInvirtiendo) return;
   basGuarda();
   clearTimeout(basReloj);
   basReescribe();
@@ -6836,6 +6846,7 @@ function actualizarBodega(){
 function setBodega(abierta){
   bodAbierta = !!abierta;
   $('bodPanel').classList.toggle('open', bodAbierta);
+  $('bodPanel').inert = !bodAbierta;
   $('bodToggle').setAttribute('aria-expanded', String(bodAbierta));
   $('bodToggleTxt').textContent = T(bodAbierta ? 'bod.toggleOff' : 'bod.toggle');
 }
